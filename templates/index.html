@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Militar de Documentos Word</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #003366;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0055a5;
+        }
+        .results {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analizador Militar de Documentos Word</h1>
+        <form id="uploadForm" enctype="multipart/form-data" method="post" action="/analyze">
+            <input type="file" name="file" id="fileInput" accept=".docx" required>
+            <br>
+            <button type="submit">Analizar Documento</button>
+        </form>
+        <div class="results">
+            {% if results %}
+                <h2>Resultados del Análisis</h2>
+                <p>Problemas con la fuente: {{ results.font_issues }}</p>
+                <p>Problemas de justificación: {{ results.justification_issues }}</p>
+                <p>Conteo de palabras: {{ results.word_count }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
